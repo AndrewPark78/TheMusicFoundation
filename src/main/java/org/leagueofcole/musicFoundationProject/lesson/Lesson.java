@@ -1,4 +1,4 @@
-package org.leagueofcole.musicFoundationProject;
+package org.leagueofcole.musicFoundationProject.lesson;
 
 import java.util.Date;
 

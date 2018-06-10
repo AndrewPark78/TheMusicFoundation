@@ -20,36 +20,32 @@
 </head>
 <body
 	style="background-image: url(https://i.ytimg.com/vi/QD0Wlsm_Sdk/maxresdefault.jpg)">
-	<div class="params">
 	<div style = "text-align:center">
 		<!--<form action = "homepage.html">-->
 		<form name="f" method="post" th:action="@{/login}">
 			<br> <br> <br> <br> <br> <br> <br>
-			<div class="labels">
-				<label for="uName">Username</label><br>
-			</div>
 			<div class="boxes">
-				<input type="text" name="username" class="inputBoxes" autocorrect="off"><br>
+				<input type="text" name="username" class="inputBoxes" autocorrect="off" placeholder = "username" size = "38" style = "height:24px"><br>
 			</div>
-			<br> <br>
-			<div class="labels">
-				<label for="pWord">Password</label><br>
-			</div>
+			<br> <br> <br> <br>
 			<div class="boxes">
 				<input type="password" name="password" class="inputBoxes"
-					autocorrect="off"><br>
+					autocorrect="off" placeholder = "password" size = "38" style = "height:24px"><br>
+					
 			</div>
 			<br> <br> <br> <br> <br> <br> <br>
 			<br>
 			<div class="boxes">
 				<!--<input type="submit" value="Login" class = "buttons">-->
-				 <button href = "/homepage.html" class="loginButton"><span>Login </span></button>
-			</div>
+                <button href = "/homepage.html" class="loginButton"><span>Login </span></button>
+                <br> <br> <br> <br>
+                <button href="/registration" class="loginButton"><span>Create New Account</span></button>
+            </div>
+                
 		</form>
 		<!-- check to see if valid-->
 	</div>
 	<br>
-</div>
 </body>
 
 </html>

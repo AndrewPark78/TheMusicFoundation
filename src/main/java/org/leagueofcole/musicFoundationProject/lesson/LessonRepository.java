@@ -1,10 +1,9 @@
-package org.leagueofcole.musicFoundationProject;
+package org.leagueofcole.musicFoundationProject.lesson;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.leagueofcole.musicFoundationProject.teacher.Teacher;
-import org.leagueofcole.musicFoundationProject.Lesson;
 
 public interface LessonRepository extends CrudRepository<Lesson , Long > {
 	public List<Lesson> findByTeacher(Teacher optional);

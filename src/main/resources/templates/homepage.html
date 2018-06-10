@@ -20,7 +20,11 @@
     <img src = "images/title.png">
     </div>
     <div style="text-align: right; text-color: blue; font-size: 25px">
-      <a href="/logout">Sign Out</a><br>
+        <!--<a th:href="@{/logout}">Sign Out</a><br>-->
+        <a href="javascript: document.logoutForm.submit()" role="menuitem">Logout</a>
+            <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                <input hidden type="submit" value="Sign Out"/>
+            </form>
     </div>
       <div class = "params">
     </div>

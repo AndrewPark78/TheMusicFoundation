@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class TeacherController {
-    @Autowired
-    private TeacherService teacherService;
+    // @Autowired
+    // private TeacherService teacherService;
 
     @Autowired
     private SecurityService securityService;
@@ -39,7 +39,7 @@ public class TeacherController {
 
         securityService.autologin(userForm.getUserName(), userForm.getPasswordConfirm());
 
-        return "redirect:/welcome";
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -53,8 +53,8 @@ public class TeacherController {
         return "login";
     }
 
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "welcome";
-    }
+//    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+//    public String welcome(Model model) {
+//        return "welcome";
+//    }
 }

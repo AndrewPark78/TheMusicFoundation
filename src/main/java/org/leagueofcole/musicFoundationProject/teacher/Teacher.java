@@ -1,14 +1,22 @@
 package org.leagueofcole.musicFoundationProject.teacher;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.leagueofcole.musicFoundationProject.role.Role;
+
 @Entity
-@Table(name = "user")
+@Table(name = "teacher")
 public class Teacher {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,23 +24,18 @@ public class Teacher {
 	private String userName;
 	private String password;
 	private String passwordConfirm;
-<<<<<<< HEAD
-	@ManyToMany
-	@JoinTable(name = "user_rle", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles;
-=======
-	//private Set<Role> roles;
->>>>>>> LeaguePelicans/master
+@ManyToMany(fetch=FetchType.EAGER)
+private Set<Role> roles;
 
-	public Teacher(String userName, String password) {
+	public Teacher(String userName, String password, String passwordConfirm) {
 		super();
 		this.userName = userName;
 		this.password = password;
+		this.passwordConfirm = passwordConfirm;
 	}
-	Teacher() {
-
-	}
-
+Teacher(){
+	
+}
 
 	public Long getId() {
 		return id;
@@ -53,9 +56,11 @@ public class Teacher {
 	public String getPassword() {
 		return password;
 	}
+
 	public String getConfirmPassword() {
 		return "";
 	}
+
 	public String getRegistryCode() {
 		return "";
 	}
@@ -73,20 +78,14 @@ public class Teacher {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-<<<<<<< HEAD
-	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name = "teacher_role", joinColumns = @JoinColumn(name = "teacher_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	public Set<Role> getRoles() {
 		return roles;
 	}
-=======
-	//@ManyToMany
-	//@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	//public Set<Role> getRoles() {
-		//return roles;
-	//}
->>>>>>> LeaguePelicans/master
 
-	//public void setRoles(Set<Role> roles) {
-		//this.roles = roles;
-	//}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
 }

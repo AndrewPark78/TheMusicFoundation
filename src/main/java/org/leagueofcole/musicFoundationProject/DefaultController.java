@@ -1,8 +1,11 @@
 package org.leagueofcole.musicFoundationProject;
 
+import org.leagueofcole.musicFoundationProject.lesson.Lesson;
+import org.leagueofcole.musicFoundationProject.lesson.LessonService;
 import org.leagueofcole.musicFoundationProject.rooms.RoomService;
 import org.leagueofcole.musicFoundationProject.teacher.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,14 +38,6 @@ public class DefaultController {
 
 	@GetMapping(path = "/")
 	public String homepage() {
-//		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-//		try {
-//			String json = ow.writeValueAsString(new Teacher("Emp palp", "rebel scum"));
-//			System.out.println(json);
-//		} catch (JsonProcessingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		return "homepage";
 	}
 
@@ -66,8 +61,9 @@ public class DefaultController {
 	
 	@GetMapping(path = "/lessons/create")
 	public String __new(@ModelAttribute NewLessonRequest newLesson, Model model) {
-		Lesson l = lessonService.createLesson(teacherService.findByUserName("wow"), roomService.findByName(newLesson.getRoom()), newLesson);
+		Lesson l = lessonService.createLesson(teacherService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()), roomService.findByName(newLesson.getRoom()), newLesson);
 		model.addAttribute("lesson", l);
 		return "view";
 	}
+	
 }

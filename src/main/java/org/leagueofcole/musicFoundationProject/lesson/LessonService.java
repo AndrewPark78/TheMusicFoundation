@@ -1,8 +1,9 @@
-package org.leagueofcole.musicFoundationProject;
+package org.leagueofcole.musicFoundationProject.lesson;
 
 import java.util.Calendar;
 import java.util.List;
 
+import org.leagueofcole.musicFoundationProject.NewLessonRequest;
 import org.leagueofcole.musicFoundationProject.rooms.Room;
 import org.leagueofcole.musicFoundationProject.teacher.Teacher;
 import org.leagueofcole.musicFoundationProject.teacher.TeacherRepository;
@@ -27,7 +28,7 @@ public class LessonService {
 		int day    = Integer.parseInt(newLesson.getDay());
 		int hour   = Integer.parseInt(newLesson.getHour());
 		int minute = Integer.parseInt(newLesson.getMinute());
-		hour      += (newLesson.getAmpm()).equals("PM") ? 12 : 0; 
+		hour += (newLesson.getAmpm()).equals("PM") ? 12 : 0; 
 		Calendar c = Calendar.getInstance();
 		c.set(year, month, day, hour, minute);
 		Long date  = c.getTime().getTime();
